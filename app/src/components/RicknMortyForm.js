@@ -6,7 +6,7 @@ const StyledButton = styled.button`
 `
 
 const StyledButtonName = styled.h4`
-    color: #FFF;
+    color: #315A72;
     font-size: 1rem;
 `
 
