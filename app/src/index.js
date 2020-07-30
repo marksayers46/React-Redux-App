@@ -1,9 +1,37 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'; 
 import './index.css';
-import App from './App';
+import './App.css';
+import ReactDOM from 'react-dom';
+import styled from 'styled-components';
+
+import RicknMorty from './components/RicknMorty';
+import reducer from './reducers';
+
+const store = createStore(reducer, applyMiddleware(thunk));
+
+const RickNMortyContainer = styled.div`
+  max-width:1024px;
+  margin: 0 auto;
+`
+
+function App() {
+  return (
+    <RickNMortyContainer className="App">
+        <RicknMorty />
+    </RickNMortyContainer>
+  );
+}
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+ReactDOM.render(
+<Provider store={store}>
+  <App />
+</Provider>
+, rootElement);
+
 
 
